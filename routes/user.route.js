@@ -12,6 +12,7 @@ userRouter.post("/register", async(req, res)=>{
     try{
         if(!/[A-Z]/.test(password) || !/\d/.test(password) || !/[!@#$%^&*()_+{}[;]/.test(password) || password.length < 8){
             return res.status(400).json({msg: "cannot register"})
+            
         }
         const existUser = await userModel.findOne({email})
         if(existUser){

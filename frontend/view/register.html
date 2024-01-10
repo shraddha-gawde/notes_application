@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>register and sign in</title>
+    <link rel="stylesheet" href="../styles/loginSignup.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="navbar">
+        <div class="logo">
+          <a href="index.html"
+            ><img src="/frontend/styles/01.jpg" alt="logo" width="30%"
+          /></a>
+        </div>
+        <nav>
+          <ul id="MenuItems">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="./products.html">Users</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="./register.html">Account</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Account Page -->
+    <div class="account-page">
+      <div class="container">
+        <div class="row">
+          <div class="col-2">
+            <div class="form-container">
+              <div class="form-btn">
+                <span onclick="login()">Login</span>
+                <span onclick="register()">Register</span>
+                <hr id="Indicator" />
+              </div>
+              <form id="LoginForm">
+                <input
+                  id="l_email"
+                  type="text"
+                  placeholder="Enter your e-mail"
+                />
+                <input
+                  id="l_password"
+                  type="password"
+                  placeholder="Enter your Password"
+                />
+                <button class="btn" id="loginbtn">Login</button>
+                <a href="">Forget Password</a>
+              </form>
+
+              <form id="RegForm">
+                <input id="r_username" type="text" placeholder="Username" />
+                <input id="r_email" type="email" placeholder="Email" />
+                <input id="r_password" type="password" placeholder="Password" />
+                <select name="roles" id="role-select">
+                  <option value="">--Please choose role--</option>
+                  <option value="admin">Admin</option>
+                  <option value="user">User</option>
+                </select>
+                <button type="submit" class="btn" id="registerbtn">
+                  Register
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+
+    <!-- Toggle Form -->
+    <script>
+      var LoginForm = document.getElementById("LoginForm");
+      var RegForm = document.getElementById("RegForm");
+      var Indicator = document.getElementById("Indicator");
+      function register() {
+        RegForm.style.transform = "translatex(0px)";
+        LoginForm.style.transform = "translatex(0px)";
+        Indicator.style.transform = "translateX(100px)";
+      }
+      function login() {
+        RegForm.style.transform = "translatex(300px)";
+        LoginForm.style.transform = "translatex(300px)";
+        Indicator.style.transform = "translate(0px)";
+      }
+      const regbtn = document.getElementById("registerbtn");
+
+      regbtn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        fetch("https://long-teal-fossa-wig.cyclic.app/users/register", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            username: document.getElementById("r_username").value,
+            email: document.getElementById("r_email").value,
+            password: document.getElementById("r_password").value,
+            role: document.getElementById("role-select").value,
+          }),
+        })
+          .then((res) => {
+            res.json();
+            if (res) {
+              window.alert("user has been resgister");
+            }
+          })
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((err) => console.log(err));
+      });
+
+      const logbtn = document.getElementById("loginbtn");
+
+      logbtn.addEventListener("click", (e) => {
+        fetch("https://long-teal-fossa-wig.cyclic.app/users/login", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            email: document.getElementById("l_email").value,
+            password: document.getElementById("l_password").value
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            localStorage.setItem("token", data.access_token);
+            // location.href = "./notesDashboard.html";
+          })
+          .catch(err => console.log(err));
+      });
+    </script>
+  </body>
+</html>
