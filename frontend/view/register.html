@@ -129,6 +129,7 @@
       const logbtn = document.getElementById("loginbtn");
 
       logbtn.addEventListener("click", (e) => {
+        e.preventDefault();
         fetch("https://long-teal-fossa-wig.cyclic.app/users/login", {
           method: "POST",
           headers: {
@@ -143,6 +144,7 @@
           .then((data) => {
             console.log(data);
             localStorage.setItem("token", data.access_token);
+            localStorage.setItem("name", data.name)
             // location.href = "./notesDashboard.html";
           })
           .catch(err => console.log(err));

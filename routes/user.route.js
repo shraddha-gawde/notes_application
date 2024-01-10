@@ -33,9 +33,10 @@ userRouter.post("/register", async(req, res)=>{
 
 
 userRouter.post("/login", async(req,res)=>{
-    const {email, password} = req.body
+    const {username, email, password, } = req.body
     try{
         const user = await userModel.findOne({email})
+        const name = user.username
         console.log(user)
         if(user){
             bcrypt.compare(password, user.password, (err, result)=>{
@@ -49,7 +50,7 @@ userRouter.post("/login", async(req,res)=>{
                     res.cookie("access_token", access_token, {httpOnly: true})
                     res.cookie("refresh_token", refresh_token, {httpOnly: true})
 
-                    res.status(200).json({msg:"Login successful!", access_token, refresh_token})
+                    res.status(200).json({msg:"Login successful!", name, access_token, refresh_token})
                 }
                 else{
                     res.status(200).json({msg:"user Does not exists!!!"})
