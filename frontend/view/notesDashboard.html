@@ -3,9 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../styles/notesDashboard.css">
+    <link rel="stylesheet" href="../styles/loginSignup.css">
+ 
+    <title>SwiftNote</title>
 </head>
 <body>
-    <h1></h1>
+    <div class="container" style="background-color: #ffffff;">
+        <div class="navbar">
+            
+            <div class="logo">
+                <a href="index.html"><img src="/frontend//styles/01.jpg" alt="logo" width="30%"></a>
+            </div>
+            <nav>
+                <button class="btn" id="loginbtn">Logout</button>
+            </nav>
+            
+        </div>
+    </div>
+    <div id="container1">
+        <h1 id="header" style="font-size: 42px;"></h1>
+        <h2 id="Welcome" style="padding-top: 20px;"></h2>
+    </div>
+    <div id"addNoteDiv>
+
+    </div>
+    <div id="note-card-list">
+        <input id="n-title" type="text" placeholder="Note Title" />
+        <textarea id="n-body" placeholder="Note Body"></textarea>
+        <button id="add-note" class = "btn1">Add Note</button>
+    </div>
+    
+    <script>
+        
+        const parent = document.getElementById("container1")
+
+        const header1 = document.getElementById("header")
+        header1.innerText = `Hello ${localStorage.getItem("name")}!`
+        parent.append(header1)
+
+        const Welcome = document.getElementById("Welcome")
+        Welcome.innerText = "Welcome to SwiftNote"
+        parent.append(Welcome)
+
+        const addNoteDiv = document.getElementById("addNoteDiv")
+
+        // const title = document.getElementById("header")
+        // header1.innerText = `Hello ${localStorage.getItem("name")}!`
+        // parent.append(header1)
+
+        // const Welcome = document.getElementById("Welcome")
+        // Welcome.innerText = "Welcome to SwiftNote"
+        // parent.append(Welcome)
+        
+        
+        function getData() {
+            fetch("https://long-teal-fossa-wig.cyclic.app/notes", {
+                headers: {
+                    "Content-type": "application/json",
+                    authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data.notes_data);
+                displayNotes(data);
+            })
+            .catch(err => console.log(err));
+        }
+
+        function displayNotes(data) {
+            const noteList = document.getElementById("note-card-list");
+            const notes = data.notes_data;
+    
+            notes.forEach(note => {
+                const noteCard = document.createElement("div");
+                noteCard.classList.add("note-card");
+
+                const title = document.createElement("h3");
+                title.innerText = note.title;
+
+                const content = document.createElement("p");
+                content.innerText = note.body;
+
+                const editBtn = document.createElement("button");
+                editBtn.className="btn1";
+                editBtn.innerText = "Edit";
+
+                const deleteBtn = document.createElement("button");
+                deleteBtn.className="btn1";
+                deleteBtn.innerText = "Delete";
+
+                noteCard.append(title, content, editBtn, deleteBtn);
+                // noteCard.appendChild(content);
+
+                noteList.appendChild(noteCard);
+            });
+        }
+
+        getData();
+    </script>
 </body>
 </html>
