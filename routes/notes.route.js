@@ -1,7 +1,6 @@
 const express = require("express");
 const { noteModel } = require("../models/notes.model");
 const { auth } = require("../middlewears/auth.middlewear");
-const { access } = require("../middlewears/access.middlewear");
 
 const noteRouter = express.Router();
 
