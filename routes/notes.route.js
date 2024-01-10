@@ -9,19 +9,21 @@ noteRouter.use(auth);
 noteRouter.post("/create", async (req, res) => {
   const payload = req.body;
   try {
-    const book = new noteModel(payload);
-    await book.save();
+    const note = new noteModel(payload);
+    await note.save();
     res
       .status(200)
-      .json({ msg: "a new note has been created", addedBook: payload });
+      .json({ msg: "a new note has been created", added_note: payload });
   } catch (err) {
     res.status(400).json({ error: err });
   }
 });
+
+
 noteRouter.get("/", auth, async (req, res) => {
   try {
-    const book = await noteModel.find({ userID: req.body.userID });
-    res.status(200).json({ books_data: book });
+    const note = await noteModel.find({ userID: req.body.userID });
+    res.status(200).json({ notes_data: note });
   } catch (err) {
     res.status(400).json({ error: err });
   }
@@ -64,5 +66,5 @@ noteRouter.delete("/delete/:noteId", async (req, res) => {
 );
 
 module.exports = {
-  noteRouter,
+  noteRouter
 };

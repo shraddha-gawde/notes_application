@@ -1,5 +1,3 @@
-// const { userModel } = require("../models/user.model")
-// const { blacklistModel } = require("../models/user.model")
 const jwt = require("jsonwebtoken")
 
 const auth = async(req, res, next)=>{
@@ -10,18 +8,13 @@ const auth = async(req, res, next)=>{
             const decode = jwt.verify(token,"shraddhaBooks")
             if(decode){
                 console.log(decode)
-                req.body.userID= decode.userID
-                req.body.username=decode.username
+                req.body.userID = decode.userID
+                req.body.username = decode.username
                 next()
             }
             else{
                 res.json({msg:"you are not authorized"})
             }
-            // const { userID } = decode
-            // const user = await userModel.findOne({_id:userID})
-            // const role = user?.role
-            // req.role = role
-            // next()
         }
         catch(err){
             res.json({error:err})
