@@ -188,7 +188,7 @@ function showModal(content) {
               headers: {
                   'Content-Type': 'application/json',
               },
-              credentials: 'include', // Send cookies with the request
+            //   credentials: 'include', // Send cookies with the request
             //   body: JSON.stringify({
             //       access_token: localStorage.getItem('token'),
             //       refresh_token: localStorage.getItem('token2'),
