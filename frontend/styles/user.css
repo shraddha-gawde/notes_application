@@ -59,3 +59,9 @@
     margin-left: 20px;
     display: none;
   } 
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(#fff, #75dba9);
+}
