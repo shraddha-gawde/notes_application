@@ -1,0 +1,61 @@
+/* Basic styling for user cards */
+.user-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px;
+    width: 90%; 
+    max-width: 600px; 
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style for user name */
+  .user-card h4 {
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  /* Style for user email and role */
+  .user-card p {
+    margin: 5px 0;
+    color: #666;
+  }
+  
+  /* Optional: Add hover effect for better interactivity */
+  .user-card:hover {
+    background-color: #f5f5f5;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Optional: Add styling for the overall user card list container */
+  #user-card-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  /* Responsive styling using media queries */
+  @media (max-width: 600px) {
+    .user-card {
+      max-width: 100%; /* Make user cards full width on smaller screens */
+    }
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .btn1 {
+        padding: 8px 10px; 
+        margin: 20px 5px 0; 
+    }
+
+    .user-card
+     {
+        width: 100%; 
+    }
+}
+.menu-icon{
+    width: 28px;
+    margin-left: 20px;
+    display: none;
+  } 
