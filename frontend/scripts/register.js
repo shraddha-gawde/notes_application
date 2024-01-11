@@ -28,7 +28,7 @@ regbtn.addEventListener("click", async (e) => {
 e.preventDefault();
 
 try {
-    const response = await fetch("https://long-teal-fossa-wig.cyclic.app/users/register", {
+    const response = await fetch("https://note-app-2fp7.onrender.com/users/register", {
         method: "POST",
         headers: {
             "Content-type": "application/json",
@@ -42,7 +42,7 @@ try {
     });
 
     if (!response.ok) {
-        window.alert("please enter right credintials(password should contain minimum 8 letters, mix of alphabet , special character, and numbers)")
+        window.alert("please enter right credintials (password should contain minimum 8 letters, mix of alphabet , special character, and numbers)")
         throw new Error(`Registration failed: ${response.statusText}`);
 
     }
@@ -61,7 +61,7 @@ logbtn.addEventListener("click", async (e) => {
 e.preventDefault();
 
 try {
-    const response = await fetch("https://long-teal-fossa-wig.cyclic.app/users/login", {
+    const response = await fetch("https://note-app-2fp7.onrender.com/users/login", {
         method: "POST",
         headers: {
             "Content-type": "application/json",

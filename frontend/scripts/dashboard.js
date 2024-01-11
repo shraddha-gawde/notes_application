@@ -14,7 +14,7 @@ addNoteDiv.addEventListener("click", async (e) => {
   e.preventDefault();
   try {
     const response = await fetch(
-      "https://long-teal-fossa-wig.cyclic.app/notes/create",
+      "https://note-app-2fp7.onrender.com/notes/create",
       {
         method: "POST",
         headers: {
@@ -42,7 +42,7 @@ addNoteDiv.addEventListener("click", async (e) => {
 
 
 function getData() {
-  fetch("https://long-teal-fossa-wig.cyclic.app/notes", {
+  fetch("https://note-app-2fp7.onrender.com/notes", {
     headers: {
       "Content-type": "application/json",
       authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -122,7 +122,7 @@ function openEditModal(noteId, currentTitle, currentBody) {
     updateBtn.addEventListener("click", async () => {
       try {
         const response = await fetch(
-          `https://long-teal-fossa-wig.cyclic.app/notes/update/${noteId}`,
+          `https://note-app-2fp7.onrender.com/notes/update/${noteId}`,
           {
             method: "PATCH",
             headers: {
@@ -182,7 +182,7 @@ function showModal(content) {
   async function deleteNote(noteId) {
     try {
       const response = await fetch(
-        `https://long-teal-fossa-wig.cyclic.app/notes/delete/${noteId}`,
+        `https://note-app-2fp7.onrender.com/notes/delete/${noteId}`,
         {
           method: "DELETE",
           headers: {
@@ -211,7 +211,7 @@ function showModal(content) {
   logoutbtn.addEventListener('click', async (e) => {
       e.preventDefault();
       try {
-          const response = await fetch('https://long-teal-fossa-wig.cyclic.app/users/logout', {
+          const response = await fetch('https://note-app-2fp7.onrender.com/users/logout', {
               method: 'GET',
               headers: {
                   'Content-Type': 'application/json',

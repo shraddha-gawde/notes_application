@@ -1,5 +1,5 @@
 function getData() {
-    fetch("https://long-teal-fossa-wig.cyclic.app/users", {
+    fetch("https://note-app-2fp7.onrender.com/users", {
       headers: {
         "Content-type": "application/json",
       },
