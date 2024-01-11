@@ -6,6 +6,8 @@ const { userModel } = require("../models/user.model")
 const cookieparser = require("cookie-parser")
 const userRouter = express.Router()
 userRouter.use(cookieparser())
+const cors = require("cors")
+app.use(cors())
 userRouter.get("/", async (req, res) => {
     try {
       const users = await userModel.find();

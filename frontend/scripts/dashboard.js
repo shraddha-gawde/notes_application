@@ -179,22 +179,33 @@ function showModal(content) {
       modalBackdrop.remove();
     }
   }
-  const logoutbtn = document.getElementById('logoutbtn')
-  logoutbtn.addEventListener('click', async () => {
-    try {
-        const response = await fetch('/logout', {
-            method: 'GET',
-            credentials: 'include', // Send cookies with the request
-        });
-
-        if (response.ok) {
-            const result = await response.json();
-            console.log(result.msg); // Display the success message
-        } else {
-            const error = await response.json();
-            console.error(error.error); // Display the error message
-        }
-    } catch (error) {
-        console.error(error);
-    }
-});
+  const logoutbtn = document.getElementById('logoutbtn');
+  logoutbtn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      try {
+          const response = await fetch('https://long-teal-fossa-wig.cyclic.app/users/logout', {
+              method: 'GET',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              credentials: 'include', // Send cookies with the request
+            //   body: JSON.stringify({
+            //       access_token: localStorage.getItem('token'),
+            //       refresh_token: localStorage.getItem('token2'),
+            //   }),
+          });
+  
+          if (response.ok) {
+              const result = await response.json();
+              console.log(result.msg); // Display the success message
+              // Redirect or perform any other action after successful logout
+              location.href = '/index.html';
+          } else {
+              const error = await response.json();
+              console.error(error.error); // Display the error message
+          }
+      } catch (error) {
+          console.error(error);
+      }
+  });
+  
