@@ -6,7 +6,7 @@ const { userModel } = require("../models/user.model")
 
 const userRouter = express.Router()
 
-userRouter.get("/", auth, async (req, res) => {
+userRouter.get("/", async (req, res) => {
     try {
       const users = await userModel.find();
       res.status(200).json({ notes_data: note });
@@ -54,7 +54,7 @@ userRouter.post("/login", async(req,res)=>{
                 if(result){
                     const access_token = jwt.sign({ userID:user._id , username:user.username}, "shraddhaBooks", {expiresIn : "7d"});
                     const refresh_token = jwt.sign({ userID:user._id , username:user.username}, "shraddhaBooks",{ expiresIn : "14d"});
-                    
+
                     res.cookie("access_token", access_token, {httpOnly: true})
                     res.cookie("refresh_token", refresh_token, {httpOnly: true})
 
