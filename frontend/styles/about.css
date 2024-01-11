@@ -11,7 +11,8 @@ footer {
     color: #fff;
     text-align: center;
     padding: 1em;
-    /* position: fixed; */
+    position: fixed;
     bottom: 0;
     width: 100%;
-}
+  }
+  
