@@ -179,6 +179,34 @@ function showModal(content) {
       modalBackdrop.remove();
     }
   }
+  async function deleteNote(noteId) {
+    try {
+      const response = await fetch(
+        `https://long-teal-fossa-wig.cyclic.app/notes/delete/${noteId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+  
+      if (!response.ok) {
+        throw new Error(`Note deletion failed: ${response.statusText}`);
+      }
+  
+      const deletedData = await response.json();
+      console.log(deletedData);
+  
+      getData();
+      window.location.reload();
+
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
+  
   const logoutbtn = document.getElementById('logoutbtn');
   logoutbtn.addEventListener('click', async (e) => {
       e.preventDefault();
@@ -208,4 +236,3 @@ function showModal(content) {
           console.error(error);
       }
   });
-  
