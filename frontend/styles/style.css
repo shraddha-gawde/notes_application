@@ -1,11 +1,7 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+
 body {
   font-family: Arial, sans-serif;
-  /* margin: 20px; */
+ 
 }
 
 h1,
@@ -85,4 +81,107 @@ a {
 }
 p {
   color: #555;
+}
+.menu-icon{
+  width: 28px;
+  margin-left: 20px;
+  display: none;
+} 
+
+@media only screen and (max-width: 800px){
+
+  nav ul{
+      position: absolute;
+      top: 70px;
+      left: 0;
+      background: #333;
+      width: 100%;
+      overflow: hidden;
+      transition: max-height 0.5s;
+  }
+  nav ul li{
+      display: block;
+      margin-right: 50px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+  }
+  nav ul li a{
+      color: white;
+  }
+  .menu-icon{
+      display: block;
+      cursor: pointer;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  /* margin: 20px; */
+}
+
+h1,
+p {
+  text-align: center;
+}
+
+.features {
+  text-align: left;
+  padding: 50px 10px; /* Adjust padding for smaller screens */
+  background: radial-gradient(#fff, #75dba9);
+}
+
+.form-container {
+  width: 90%; /* Adjust width for smaller screens */
+  max-width: 600px;
+  height: auto; /* Adjust height for smaller screens */
+  position: relative;
+  padding: 20px;
+  margin: auto;
+  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.cta-buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.cta-buttons a {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  background: #079852;
+  padding: 8px 15px; /* Adjust padding for smaller screens */
+  margin: 15px 0; /* Adjust margin for smaller screens */
+  border-radius: 30px;
+  transition: background 0.5s;
+}
+
+.cta-buttons a:hover {
+  background: #02592f;
+}
+
+ul li {
+  display: block;
+  margin-right: 10px; /* Adjust margin for smaller screens */
+  margin-top: 10px;
+  margin-bottom: 10px; /* Adjust margin for smaller screens */
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 768px) {
+  
+
+  .cta-buttons a {
+    margin: 15px 5px; /* Adjust margin for smaller screens */
+  }
+
+  .features {
+    padding: 30px 10px; /* Adjust padding for smaller screens */
+  }
 }

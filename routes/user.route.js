@@ -1,11 +1,19 @@
 const express = require("express")
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
-
+const { blacklistModel } = require("../models/blacklist.model");
 const { userModel } = require("../models/user.model")
 
 const userRouter = express.Router()
 
+userRouter.get("/", auth, async (req, res) => {
+    try {
+      const users = await userModel.find();
+      res.status(200).json({ notes_data: note });
+    } catch (err) {
+      res.status(400).json({ error: err });
+    }
+  });
 
 userRouter.post("/register", async(req, res)=>{
     const {username, email, password, role} = req.body
@@ -64,6 +72,22 @@ userRouter.post("/login", async(req,res)=>{
         res.status(400).json({error:err})
     }
 })
+userRouter.get("/logout", async (req, res) => {
+    const access_token = req.cookies.access_token;
+    const refresh_token = req.cookies.refresh_token;
+  
+    try {
+      const blacklist = new blacklistModel({ access_token, refresh_token });
+      await blacklist.save();
+  
+      res.clearCookie("access_token");
+      res.clearCookie("refresh_token");
+  
+      res.status(200).json({ msg: "User has been logged out" });
+    } catch (err) {
+      res.status(400).json({ error:err});
+    }
+  });
 
 module.exports={
     userRouter

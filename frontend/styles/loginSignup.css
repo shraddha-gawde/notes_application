@@ -121,8 +121,15 @@ form a{
 }
 
 /* Media query for menu */
-@media only screen and (max-width: 800px){
 
+.menu-icon{
+    width: 28px;
+    margin-left: 20px;
+    display: none;
+  } 
+  
+  @media only screen and (max-width: 800px){
+  
     nav ul{
         position: absolute;
         top: 70px;
@@ -145,4 +152,9 @@ form a{
         display: block;
         cursor: pointer;
     }
-}
+    .account-page{
+        margin-top: 40px;
+        padding: 50px 0;
+        background: radial-gradient(#fff, #75dba9);
+    }
+  }
