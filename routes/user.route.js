@@ -3,9 +3,9 @@ const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
 const { blacklistModel } = require("../models/blacklist.model");
 const { userModel } = require("../models/user.model")
-
+const cookieparser = require("cookie-parser")
 const userRouter = express.Router()
-
+userRouter.use(cookieparser())
 userRouter.get("/", async (req, res) => {
     try {
       const users = await userModel.find();

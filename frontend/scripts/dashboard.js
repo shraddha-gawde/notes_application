@@ -179,31 +179,22 @@ function showModal(content) {
       modalBackdrop.remove();
     }
   }
-  async function deleteNote(noteId) {
+  const logoutbtn = document.getElementById('logoutbtn')
+  logoutbtn.addEventListener('click', async () => {
     try {
-      const response = await fetch(
-        `https://long-teal-fossa-wig.cyclic.app/notes/delete/${noteId}`,
-        {
-          method: "DELETE",
-          headers: {
-            "Content-type": "application/json",
-            authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      );
-  
-      if (!response.ok) {
-        throw new Error(`Note deletion failed: ${response.statusText}`);
-      }
-  
-      const deletedData = await response.json();
-      console.log(deletedData);
-  
-      getData();
-      window.location.reload();
+        const response = await fetch('/logout', {
+            method: 'GET',
+            credentials: 'include', // Send cookies with the request
+        });
 
-    } catch (err) {
-      console.log(err.message);
+        if (response.ok) {
+            const result = await response.json();
+            console.log(result.msg); // Display the success message
+        } else {
+            const error = await response.json();
+            console.error(error.error); // Display the error message
+        }
+    } catch (error) {
+        console.error(error);
     }
-  }
-  
+});
