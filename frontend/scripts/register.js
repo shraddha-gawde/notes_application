@@ -42,13 +42,14 @@ try {
     });
 
     if (!response.ok) {
-        window.alert("please enter right credintials")
+        window.alert("please enter right credintials(password should contain minimum 8 letters, mix of alphabet , special character, and numbers)")
         throw new Error(`Registration failed: ${response.statusText}`);
 
     }
 
     const data = await response.json();
     console.log(data);
+    window.location.reload();
 } catch (err) {
     console.log(err.message);
 }
