@@ -202,7 +202,7 @@ function showModal(content) {
               location.href = '/index.html';
           } else {
               const error = await response.json();
-              console.error(error.error); // Display the error message
+              console.error(error.error);
           }
       } catch (error) {
           console.error(error);

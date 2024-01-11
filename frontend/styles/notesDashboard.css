@@ -22,8 +22,8 @@ h2 {
     display: inline-block;
     background: #079852;
     color: white;
-    padding: 8px 15px; /* Adjust padding for smaller screens */
-    margin: 20px 10px 0; /* Adjust margin for smaller screens */
+    padding: 8px 15px; 
+    margin: 20px 10px 0;
     border-radius: 30px;
     transition: background 0.5s;
 }
@@ -46,8 +46,8 @@ h2 {
     border-radius: 8px;
     padding: 15px;
     margin: 10px;
-    width: 90%; /* Use percentage for responsive width */
-    max-width: 600px; /* Add max-width for larger screens */
+    width: 90%; 
+    max-width: 600px; 
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -55,14 +55,14 @@ h2 {
 /* Media query for smaller screens */
 @media only screen and (max-width: 600px) {
     .btn1 {
-        padding: 8px 10px; /* Adjust padding for smaller screens */
-        margin: 20px 5px 0; /* Adjust margin for smaller screens */
+        padding: 8px 10px; 
+        margin: 20px 5px 0; 
     }
 
     .note-card,
     #n-title,
     #n-body {
-        width: 100%; /* Full width for smaller screens */
+        width: 100%; 
     }
 }
 .menu-icon{

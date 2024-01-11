@@ -10,7 +10,7 @@ userRouter.use(cookieparser())
 userRouter.get("/", async (req, res) => {
     try {
       const users = await userModel.find();
-      res.status(200).json({ notes_data: note });
+      res.status(200).json({ user_data: users });
     } catch (err) {
       res.status(400).json({ error: err });
     }
