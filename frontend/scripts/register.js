@@ -81,6 +81,7 @@ try {
     console.log(data);
 
     localStorage.setItem("token", data.access_token);
+    localStorage.setItem("token2", data.refresh_token);
     localStorage.setItem("name", data.name);
     location.href = "./notesDashboard.html";
 } catch (err) {

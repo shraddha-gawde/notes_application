@@ -39,13 +39,7 @@ addNoteDiv.addEventListener("click", async (e) => {
     console.log(err.message);
   }
 });
-// const title = document.getElementById("header")
-// header1.innerText = `Hello ${localStorage.getItem("name")}!`
-// parent.append(header1)
 
-// const Welcome = document.getElementById("Welcome")
-// Welcome.innerText = "Welcome to SwiftNote"
-// parent.append(Welcome)
 
 function getData() {
   fetch("https://long-teal-fossa-wig.cyclic.app/notes", {
